@@ -113,6 +113,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: background-color 0.3s;
+            margin-bottom: 10px; /* Separación para no pegar con el siguiente producto */
         }
         .buy-button:hover {
             background-color: #1ebe56;
@@ -153,6 +154,42 @@
         .footer-content a:hover {
             color: #25d366;
         }
+        
+        /* Estilos para Botones de Redes Sociales */
+        .social-buttons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: #333; /* Fondo gris oscuro para contrastar */
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5em;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+        .social-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Colores específicos */
+        .social-button.facebook:hover {
+            background-color: #3b5998; /* Azul de Facebook */
+        }
+        .social-button.instagram:hover {
+            background-color: #e1306c; /* Degradado de Instagram */
+        }
+        .social-button.support:hover {
+            background-color: #007bff; /* Azul de Soporte (Estándar) */
+        }
+
     </style>
 </head>
 <body>
@@ -194,7 +231,7 @@
             </div>
 
             <div class="product-card">
-                <img src="https://i.postimg.cc/XNRhbq0k/D-NQ-NP-675123-MLM92398495828-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Blusa de Seda">
+                <img src="https://i.postimg.cc/XNRhbq0k/D-NQ-NP-675123-MLM92398495828-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Hugo Boss">
                 <h3>Revolution Wax "Hugo Boss"</h3>
                 <p>Fórmula lavado en seco 5 en 1. Lava, Encera, Cristaliza, Protege y Pule</p>
                 <div class="price">$200.00 MX</div>
@@ -204,11 +241,11 @@
             </div>
             
             <div class="product-card">
-                <img src="https://i.postimg.cc/mgmkq0Fw/D-NQ-NP-960118-MLM89574716468-082025-O-gel-acondicionador-revolution-wax-abrillanta-nutre-protege.webp" alt="Bufanda Cachemir">
+                <img src="https://i.postimg.cc/mgmkq0Fw/D-NQ-NP-960118-MLM89574716468-082025-O-gel-acondicionador-revolution-wax-abrillanta-nutre-protege.webp" alt="Crema Acondicionadora">
                 <h3>Crema Acondicionadora y Abrillantadora</h3>
                 <p>No empaña cristales.</p>
                 <div class="price">$50.00 MX</div>
-                <a href="https://wa.me/521XXXXXXXXXX?text=Hola!%20Quisiera%20saber%20m%C3%A1s%20sobre%20la%20Bufanda%20Cachemir%20Escoc%C3%A9s.%20%C2%BFQu%C3%A9%20colores%20tienen?" class="buy-button" target="_blank">
+                <a href="https://wa.me/5214499328985?text=Hola!%20Quisiera%20saber%20m%C3%A1s%20sobre%20la%20Crema%20Acondicionadora%20y%20Abrillantadora.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
                     <i class="fab fa-whatsapp"></i> Comprar/Consultar
                 </a>
             </div>
@@ -220,7 +257,18 @@
         <div class="footer-content">
             <p class="motto">"La elegancia es la única belleza que nunca se desvanece."</p>
             
-            <p>Contacto: <a href="mailto:hola@recolutionwax.com">revolutionwaxns@gmail.com</a></p>
+            <div class="social-buttons">
+                <a href="https://www.facebook.com/RevolutionWaxRW" target="_blank" class="social-button facebook" aria-label="Síguenos en Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/angelzamorange" target="_blank" class="social-button instagram" aria-label="Síguenos en Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/5217719624236?text=Hola!%20Quisiera%20hablar%20con%20soporte%20por%20favor%20gracias." target="_blank" class="social-button support" aria-label="Contacto/Soporte">
+                    <i class="fas fa-headset"></i>
+                </a>
+            </div>
+            <p>Contacto: <a href="mailto: revolutionwaxns@gmail.com">revolutionwaxns@gmail.com</a></p>
             
             <p>&copy; 2025 Revolution Wax. Todos los derechos reservados.</p>
         </div>
@@ -240,7 +288,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-  /* Estilos Generales y Tipografía Elegante */
+        /* Estilos Generales y Tipografía Elegante */
         body {
             font-family: 'Lato', sans-serif;
             margin: 0;
@@ -288,7 +336,7 @@
             max-width: 1300px;
             margin: 50px auto;
         }
-        .product-grid {
+  .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
@@ -343,9 +391,57 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: background-color 0.3s;
+            margin-bottom: 10px; /* Separación para no pegar con el siguiente producto */
         }
         .buy-button:hover {
             background-color: #1ebe56;
         }
         .buy-button i {
             margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        /* FOOTER PROFESIONAL */
+        footer {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-content p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            font-weight: 300;
+        }
+        .footer-content .motto {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #D4AF37; /* Color dorado/metálico para elegancia */
+            font-style: italic;
+        }
+        .footer-content a {
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-content a:hover {
+            color: #25d366;
+        }
+        
+        /* Estilos para Botones de Redes Sociales */
+        .social-buttons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
