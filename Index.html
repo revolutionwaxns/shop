@@ -10,123 +10,254 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
+        /* --- VARIABLES DE DISEÑO PROFESIONAL --- */
+        :root {
+            --color-dark: #1a1a1a;
+            --color-light: #fcfcfc;
+            --color-accent: #25d366; /* Verde WhatsApp como acento principal */
+            --color-accent-hover: #1ebe56;
+            --color-text: #333;
+            --color-title: #000;
+        }
+
         /* Estilos Generales y Tipografía Elegante */
         body {
             font-family: 'Lato', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fcfcfc;
-            color: #1a1a1a;
+            background-color: var(--color-light);
+            color: var(--color-text);
             text-align: center;
+            scroll-behavior: smooth; /* Desplazamiento suave para los enlaces del menú */
         }
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             letter-spacing: 1px;
-            color: #333;
+            color: var(--color-title);
         }
         
-        /* Encabezado y Logo */
+        /* --- HEADER Y NAVEGACIÓN (MENU) --- */
         header {
-            background-color: #1a1a1a;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: var(--color-dark);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: sticky; /* Menú fijo al hacer scroll */
+            top: 0;
+            z-index: 1000;
         }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
         .logo img {
-            max-width: 250px; 
+            max-width: 200px; 
             height: auto;
-            filter: invert(1); /* Hace que el logo se vea blanco sobre fondo negro */
+            filter: invert(1); /* Logo blanco sobre fondo negro */
+        }
+
+        /* Navegación (Menú) */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1em;
+            text-transform: uppercase;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--color-accent); /* Color de acento al pasar el mouse */
+        }
+        /* Subrayado interactivo */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease-out;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Botón de Llamada a la Acción Principal (Menú) */
+        .main-cta {
+            background-color: var(--color-accent);
+            color: var(--color-dark) !important;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 3px 0 #188d44;
+        }
+        .main-cta:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 0 #188d44;
+        }
+        .main-cta:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 #188d44;
+        }
+        .main-cta::after {
+            display: none; /* Deshabilitar subrayado del nav */
         }
         
-        /* Sección Principal y Título */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            nav ul {
+                padding: 10px 0;
+                justify-content: center;
+                gap: 15px;
+            }
+            .main-cta {
+                margin-top: 10px;
+            }
+        }
+        
+        /* --- HERO Y CONTENIDO PRINCIPAL --- */
         .hero-title {
-            padding: 50px 20px;
-            background-color: #ffffff;
+            padding: 80px 20px;
+            background-color: var(--color-light);
         }
         .hero-title h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             margin-bottom: 10px;
+            color: var(--color-dark);
         }
         .hero-title p {
             color: #555;
-            font-size: 1.1em;
+            font-size: 1.2em;
             font-style: italic;
         }
 
-        /* Catálogo y Grid de Productos */
+        /* --- SECCIÓN CARRUSEL DE PRODUCTOS --- */
         .catalog-container {
-            width: 90%;
+            width: 100%;
             max-width: 1300px;
             margin: 50px auto;
         }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+        
+        .product-carousel {
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 30px;
+            padding: 10px 20px 40px; 
             margin-top: 40px;
         }
         
+        /* Ocultar barra de desplazamiento */
+        .product-carousel::-webkit-scrollbar { display: none; }
+        .product-carousel { -ms-overflow-style: none; scrollbar-width: none; }
+        
         /* Tarjeta de Producto */
         .product-card {
-            background-color: #ffffff;
-            border: 1px solid #eee;
-            border-radius: 4px;
+            flex: 0 0 320px;
+            scroll-snap-align: start;
+            background-color: var(--color-light);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             transition: box-shadow 0.3s, transform 0.3s;
+            max-width: 320px;
         }
+        
+        @media (max-width: 768px) {
+             .product-card {
+                flex: 0 0 80%; /* Ajuste en móvil */
+                max-width: 80%;
+             }
+        }
+        
         .product-card:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
             transform: translateY(-5px);
         }
+        
+        /* --- ESTE BLOQUE MANTIENE LAS DIMENSIONES ORIGINALES DE LA FOTO --- */
         .product-card img {
             width: 100%;
-            height: 400px; 
+            height: 300px; /* Tamaño solicitado (mantenido) */
             object-fit: cover; 
-            border-radius: 4px;
+            border-radius: 6px;
             margin-bottom: 15px;
             border: 1px solid #f0f0f0;
         }
+        /* ------------------------------------------------------------------- */
+
         .product-card h3 {
+            color: var(--color-text);
             font-size: 1.6em;
             margin: 10px 0 5px;
-        }
-        
-        /* Precios en Rojo (Impacto de Venta) */
-        .price {
-            font-size: 2em;
-            font-weight: 700;
-            color: #cc0000; /* Rojo Clásico y llamativo */
-            margin-bottom: 20px;
+            text-align: center;
         }
 
-        /* Botón de Comprar (WhatsApp) */
+        .price {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #cc0000; /* Se mantiene el rojo para resaltar el precio de venta */
+            margin-bottom: 15px;
+        }
+        
+        /* Botón de Comprar (Interactivo) */
         .buy-button {
             display: block;
             width: 100%;
             padding: 14px;
-            background-color: #25d366; /* Verde WhatsApp */
-            color: white;
+            background-color: var(--color-accent); 
+            color: var(--color-dark); /* Texto oscuro para mayor contraste */
             text-decoration: none;
-            border-radius: 2px;
+            border-radius: 4px;
             font-size: 1.1em;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: background-color 0.3s;
-            margin-bottom: 10px; /* Separación para no pegar con el siguiente producto */
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 0 #188d44; /* Sombra 3D */
+            border: none;
         }
+
         .buy-button:hover {
-            background-color: #1ebe56;
+            background-color: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #188d44;
+        }
+        .buy-button:active {
+            transform: translateY(4px); /* Efecto de click */
+            box-shadow: 0 0 0 #188d44;
         }
         .buy-button i {
             margin-right: 10px;
             font-size: 1.2em;
         }
 
-        /* FOOTER PROFESIONAL */
+        /* --- FOOTER PROFESIONAL --- */
         footer {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            background-color: var(--color-dark);
+            color: var(--color-light);
             padding: 40px 20px;
             margin-top: 50px;
         }
@@ -134,28 +265,23 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        .footer-content p {
-            margin: 5px 0;
-            font-size: 0.9em;
-            font-weight: 300;
-        }
         .footer-content .motto {
             font-family: 'Playfair Display', serif;
             font-size: 1.2em;
             margin-bottom: 20px;
-            color: #D4AF37; /* Color dorado/metálico para elegancia */
+            color: var(--color-accent); /* Lema en color de acento */
             font-style: italic;
         }
         .footer-content a {
-            color: #f0f0f0;
+            color: var(--color-light);
             text-decoration: none;
             transition: color 0.3s;
         }
         .footer-content a:hover {
-            color: #25d366;
+            color: var(--color-accent);
         }
         
-        /* Estilos para Botones de Redes Sociales */
+        /* Estilos para Botones de Redes Sociales (Interactivos) */
         .social-buttons {
             margin: 20px 0;
             display: flex;
@@ -168,7 +294,7 @@
             justify-content: center;
             width: 45px;
             height: 45px;
-            background-color: #333; /* Fondo gris oscuro para contrastar */
+            background-color: #333;
             color: white;
             border-radius: 50%;
             font-size: 1.5em;
@@ -178,84 +304,90 @@
         .social-button:hover {
             transform: scale(1.1);
         }
-
-        /* Colores específicos */
-        .social-button.facebook:hover {
-            background-color: #3b5998; /* Azul de Facebook */
-        }
-        .social-button.instagram:hover {
-            background-color: #e1306c; /* Degradado de Instagram */
-        }
-        .social-button.support:hover {
-            background-color: #007bff; /* Azul de Soporte (Estándar) */
-        }
+        /* Colores específicos de redes para mantener la marca */
+        .social-button.facebook:hover { background-color: #3b5998; }
+        .social-button.instagram:hover { background-color: #e1306c; }
+        .social-button.support:hover { background-color: var(--color-accent); }
 
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <img src="https://i.postimg.cc/Y9XpPkW3/1759816774563.png" alt="Logo Revolution Wax">
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://i.postimg.cc/Y9XpPkW3/1759816774563.png" alt="Logo Revolution Wax">
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+            </nav>
         </div>
     </header>
 
-    <div class="hero-title">
-        <h1>Revolution Wax</h1>
-        <p>Formula premium. Lavado en seco.</p>
-    </div>
-
-    <div class="catalog-container">
-        <h2>Nuestros Productos Premium</h2>
-        
-        <div class="product-grid">
-
-            <div class="product-card">
-                <img src="https://i.postimg.cc/nMfc42m1/D-NQ-NP-834678-MLM92797513859-092025-O-2-revolution-wax-aroma-fresa-formula-lavado-en-seco-1-litro.webp" alt="Revolution Wax Fresa">
-                <h3>Revolution Wax "Fresa"</h3>
-                <p>Fórmula lavado en seco 5 en 1. Lava, Encera, Cristaliza, Protege y Pule</p>
-                <div class="price">$200.00 MX</div>
-                <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20fresa.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Comprar/Consultar
-                </a>
-            </div>
-
-            <div class="product-card">
-                <img src="https://i.postimg.cc/ncVFq3Cy/D-NQ-NP-827300-MLM92390346690-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Frutal">
-                <h3>Revolution Wax "Frutal"</h3>
-                <p>Fórmula lavado en seco 5 en 1. Lava, Encera, Cristaliza, Protege y Pule</p>
-                <div class="price">$200.00 MX</div>
-                <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20frutal.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Comprar/Consultar
-                </a>
-            </div>
-
-            <div class="product-card">
-                <img src="https://i.postimg.cc/XNRhbq0k/D-NQ-NP-675123-MLM92398495828-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Hugo Boss">
-                <h3>Revolution Wax "Hugo Boss"</h3>
-                <p>Fórmula lavado en seco 5 en 1. Lava, Encera, Cristaliza, Protege y Pule</p>
-                <div class="price">$200.00 MX</div>
-                <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20Hugo%20Boss.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Comprar/Consultar
-                </a>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://i.postimg.cc/mgmkq0Fw/D-NQ-NP-960118-MLM89574716468-082025-O-gel-acondicionador-revolution-wax-abrillanta-nutre-protege.webp" alt="Crema Acondicionadora">
-                <h3>Crema Acondicionadora y Abrillantadora</h3>
-                <p>No empaña cristales.</p>
-                <div class="price">$50.00 MX</div>
-                <a href="https://wa.me/5214499328985?text=Hola!%20Quisiera%20saber%20m%C3%A1s%20sobre%20la%20Crema%20Acondicionadora%20y%20Abrillantadora.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Comprar/Consultar
-                </a>
-            </div>
-
+    <main id="inicio">
+        <div class="hero-title">
+            <h1>Revolution Wax: El Cuidado Premium que tu Auto Merece</h1>
+            <p>La fórmula definitiva 5 en 1 para un lavado en seco impecable, brillo y protección duradera.</p>
         </div>
-    </div>
+    
+        <div class="catalog-container" id="productos">
+            <h2>Colección de Productos Premium</h2>
+            
+            <div class="product-carousel">
+    
+                <div class="product-card">
+                    <img src="https://i.postimg.cc/nMfc42m1/D-NQ-NP-834678-MLM92797513859-092025-O-2-revolution-wax-aroma-fresa-formula-lavado-en-seco-1-litro.webp" alt="Revolution Wax Fresa">
+                    <h3>Revolution Wax "Fresas"</h3>
+                    <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Fresas ¡2X1!</p>
+                    <div class="price">$200.00 MX</div>
+                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20fresa.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Comprar/Consultar
+                    </a>
+                </div>
+    
+                <div class="product-card">
+                    <img src="https://i.postimg.cc/ncVFq3Cy/D-NQ-NP-827300-MLM92390346690-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Frutal">
+                    <h3>Revolution Wax "Frutal"</h3>
+                    <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Frutal ¡2X1!</p>
+                    <div class="price">$200.00 MX</div>
+                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20frutal.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Comprar/Consultar
+                    </a>
+                </div>
+    
+                <div class="product-card">
+                    <img src="https://i.postimg.cc/XNRhbq0k/D-NQ-NP-675123-MLM92398495828-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Hugo Boss">
+                    <h3>Revolution Wax "Hugo Boss"</h3>
+                    <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Hugo Boss ¡2X1!</p>
+                    <div class="price">$200.00 MX</div>
+                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20Hugo%20Boss.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Comprar/Consultar
+                    </a>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://i.postimg.cc/mgmkq0Fw/D-NQ-NP-960118-MLM89574716468-082025-O-gel-acondicionador-revolution-wax-abrillanta-nutre-protege.webp" alt="Crema Acondicionadora">
+                    <h3>Crema Acondicionadora y Abrillantadora</h3>
+                    <p>Tratamiento para tablero y llantas, material de piel y vinil. No tiene glicerina,No empaña cristales.</p>
+                    <div class="price">$50.00 MX</div>
+                    <a href="https://wa.me/5214499328985?text=Hola!%20Quisiera%20saber%20m%C3%A1s%20sobre%20la%20Crema%20Acondicionadora%20y%20Abrillantadora.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Comprar/Consultar
+                    </a>
+                </div>
+    
+            </div>
+            <p style="margin-top: 20px; color: #777; font-style: italic; font-size: 0.9em;">(Desliza para ver más productos)</p>
+        </div>
+    </main>
 
-    <footer>
+    <footer id="contacto">
         <div class="footer-content">
-            <p class="motto">"La elegancia es la única belleza que nunca se desvanece."</p>
+            <p class="motto">"La calidad de nuestra cera es el reflejo de nuestro compromiso con tu auto."</p>
             
             <div class="social-buttons">
                 <a href="https://www.facebook.com/RevolutionWaxRW" target="_blank" class="social-button facebook" aria-label="Síguenos en Facebook">
@@ -269,179 +401,11 @@
                 </a>
             </div>
             <p>Contacto: <a href="mailto: revolutionwaxns@gmail.com">revolutionwaxns@gmail.com</a></p>
+            <p>Teléfono: <a href="tel:+5214499328985">449 932 8985</a></p>
             
-            <p>&copy; 2025 Revolution Wax. Todos los derechos reservados.</p>
+            <p style="margin-top: 20px;">&copy; 2025 Revolution Wax. Todos los derechos reservados.</p>
         </div>
     </footer>
 
 </body>
 </html>
-￼Enter<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revolution Wax | Colección Premium</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <style>
-        /* Estilos Generales y Tipografía Elegante */
-        body {
-            font-family: 'Lato', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fcfcfc;
-            color: #1a1a1a;
-            text-align: center;
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
-            color: #333;
-        }
-        
-        /* Encabezado y Logo */
-        header {
-            background-color: #1a1a1a;
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .logo img {
-            max-width: 250px; 
-            height: auto;
-            filter: invert(1); /* Hace que el logo se vea blanco sobre fondo negro */
-        }
-        
-        /* Sección Principal y Título */
-        .hero-title {
-            padding: 50px 20px;
-            background-color: #ffffff;
-        }
-        .hero-title h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        .hero-title p {
-            color: #555;
-            font-size: 1.1em;
-            font-style: italic;
-        }
-
-        /* Catálogo y Grid de Productos */
-        .catalog-container {
-            width: 90%;
-            max-width: 1300px;
-            margin: 50px auto;
-        }
-  .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-        
-        /* Tarjeta de Producto */
-        .product-card {
-            background-color: #ffffff;
-            border: 1px solid #eee;
-            border-radius: 4px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
-        .product-card:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
-        }
-        .product-card img {
-            width: 100%;
-            height: 400px; 
-            object-fit: cover; 
-            border-radius: 4px;
-            margin-bottom: 15px;
-            border: 1px solid #f0f0f0;
-        }
-        .product-card h3 {
-            font-size: 1.6em;
-            margin: 10px 0 5px;
-        }
-        
-        /* Precios en Rojo (Impacto de Venta) */
-        .price {
-            font-size: 2em;
-            font-weight: 700;
-            color: #cc0000; /* Rojo Clásico y llamativo */
-            margin-bottom: 20px;
-        }
-
-        /* Botón de Comprar (WhatsApp) */
-        .buy-button {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background-color: #25d366; /* Verde WhatsApp */
-            color: white;
-            text-decoration: none;
-            border-radius: 2px;
-            font-size: 1.1em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s;
-            margin-bottom: 10px; /* Separación para no pegar con el siguiente producto */
-        }
-        .buy-button:hover {
-            background-color: #1ebe56;
-        }
-        .buy-button i {
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-
-        /* FOOTER PROFESIONAL */
-        footer {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .footer-content p {
-            margin: 5px 0;
-            font-size: 0.9em;
-            font-weight: 300;
-        }
-        .footer-content .motto {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: #D4AF37; /* Color dorado/metálico para elegancia */
-            font-style: italic;
-        }
-        .footer-content a {
-            color: #f0f0f0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-content a:hover {
-            color: #25d366;
-        }
-        
-        /* Estilos para Botones de Redes Sociales */
-        .social-buttons {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        .social-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
