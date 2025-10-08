@@ -224,6 +224,15 @@
             text-align: center;
         }
 
+        /* NUEVO: Precio Tachado */
+        .old-price {
+            font-size: 1.1em;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: -5px; /* Acercar al precio actual */
+            display: block;
+        }
+
         .price {
             font-size: 2.2em;
             font-weight: 700;
@@ -385,7 +394,7 @@
                 <div class="product-card">
                     <img src="https://i.postimg.cc/1XsBBBCr/Screenshot-20251007-185454-366.png" alt="Evento Santa Mónica">
                     <h3>¡Próximo evento en Santa Mónica!</h3>
-                    <p>todas tus cargas realizadas de $350 hacia adelante te dara oportunidad de ganar vales de gasolina,Aceites y Productos Revolution Wax.</p>
+                    <p>Todas tus cargas realizadas de $350 hacia adelante te dara oportunidad de ganar vales de gasolina,Aceites y Productos Revolution Wax.</p>
                     <div class="novelty-address">
                         <i class="fas fa-map-marker-alt"></i> 
                         <a href="https://maps.app.goo.gl/6iJawbu2SL68op5X7?g_st=ac" target="_blank" title="Ver en Google Maps">
@@ -424,6 +433,7 @@
             </div>
             <p style="margin-top: 20px; color: #777; font-style: italic; font-size: 0.9em;">(Desliza para ver más novedades)</p>
         </div>
+        
         <div class="catalog-container" id="productos">
             <h2>Colección de Productos Premium</h2>
             
@@ -433,8 +443,9 @@
                     <img src="https://i.postimg.cc/ncVFq3Cy/D-NQ-NP-827300-MLM92390346690-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Frutal">
                     <h3>Revolution Wax "Frutal"</h3>
                     <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Frutal ¡2X1!</p>
+                    <div class="old-price">$350.00 MX</div>
                     <div class="price">$200.00 MX</div>
-                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20fresa.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
+                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20frutal.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
                         <i class="fab fa-whatsapp"></i> Comprar/Consultar
                     </a>
                 </div>
@@ -443,8 +454,9 @@
                     <img src="https://i.postimg.cc/nMfc42m1/D-NQ-NP-834678-MLM92797513859-092025-O-2-revolution-wax-aroma-fresa-formula-lavado-en-seco-1-litro.webp" alt="Revolution Wax Fresas">
                     <h3>Revolution Wax "Fresas"</h3>
                     <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Fresas ¡2X1!</p>
+                     <div class="old-price">$350.00 MX</div>
                     <div class="price">$200.00 MX</div>
-                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20frutal.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
+                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20fresas.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
                         <i class="fab fa-whatsapp"></i> Comprar/Consultar
                     </a>
                 </div>
@@ -453,6 +465,7 @@
                     <img src="https://i.postimg.cc/XNRhbq0k/D-NQ-NP-675123-MLM92398495828-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Hugo Boss">
                     <h3>Revolution Wax "Hugo Boss"</h3>
                     <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Hugo Boss ¡2X1!</p>
+                     <div class="old-price">$350.00 MX</div>
                     <div class="price">$200.00 MX</div>
                     <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20Hugo%20Boss.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
                         <i class="fab fa-whatsapp"></i> Comprar/Consultar
@@ -472,7 +485,7 @@
             </div>
             <p style="margin-top: 20px; color: #777; font-style: italic; font-size: 0.9em;">(Desliza para ver más productos)</p>
         </div>
-    </main>
+        </main>
 
     <footer id="contacto">
         <div class="footer-content">
@@ -492,7 +505,7 @@
             <p>Contacto: <a href="mailto: revolutionwaxns@gmail.com">revolutionwaxns@gmail.com</a></p>
             <p>Teléfono: <a href="tel:4499328985">449 932 8985</a></p>
             
-            <p style="margin-top: 20px;">&copy; 2025 Revolution Wax. Todos los derechos reservados.</p>
+            <p style="margin-top: 20px;">© 2025 Revolution Wax. Todos los derechos reservados.</p>
         </div>
     </footer>
 
