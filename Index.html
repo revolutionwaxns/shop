@@ -3,511 +3,1065 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revolution Wax | Colección Premium</title>
+    <title>Revolution Wax | El Futuro del Cuidado Automotriz</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* --- VARIABLES DE DISEÑO PROFESIONAL --- */
+        /* --- VARIABLES DE DISEÑO (PREMIUM / MINIMALIST) --- */
         :root {
-            --color-dark: #1a1a1a;
-            --color-light: #fcfcfc;
-            --color-accent: #25d366; /* Verde WhatsApp como acento principal */
-            --color-accent-hover: #1ebe56;
-            --color-text: #333;
-            --color-title: #000;
-        }
+            /* Paleta de Colores */
+            --color-white: #FFFFFF;
+            --color-black: #111111;
+            --color-gray: #777777;
+            --color-light-gray: #F4F4F4;
+            --color-border: #EAEAEA;
+            --color-blue: #005FFF;      /* Acento principal */
+            --color-red: #D90000;       /* Precios */
+            --color-whatsapp: #25d366;  /* Verde WhatsApp */
 
-        /* Estilos Generales y Tipografía Elegante */
-        body {
-            font-family: 'Lato', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--color-light);
-            color: var(--color-text);
-            text-align: center;
-            scroll-behavior: smooth; /* Desplazamiento suave para los enlaces del menú */
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
-            color: var(--color-title);
+            /* Tipografía */
+            --font-heading: 'Manrope', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
         
-        /* --- HEADER Y NAVEGACIÓN (MENU) --- */
-        header {
-            background-color: var(--color-dark);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            position: sticky; /* Menú fijo al hacer scroll */
-            top: 0;
-            z-index: 1000;
-        }
+        /* --- ESTILOS GENERALES Y ANIMACIONES BASE --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
-        .header-container {
-            max-width: 1200px;
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-white);
+            color: var(--color-black);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        
+        .container { 
+            width: 90%; 
+            max-width: 1200px; 
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
         }
 
-        .logo img {
-            max-width: 200px; 
-            height: auto;
-            filter: invert(1); /* Logo blanco sobre fondo negro */
+        /* --- ANIMACIONES AL HACER SCROLL --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-timeline: view();
+            animation-range-start: 100px;
+            animation-range-end: 400px;
         }
 
-        /* Navegación (Menú) */
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 30px;
+        /* --- TIPOGRAFÍA --- */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.5em;
         }
+        h2 { 
+            font-size: 2.8rem; 
+            text-align: center; 
+            margin-bottom: 1.5em; 
+        }
+        h3 { font-size: 1.5rem; }
+        
+        p { margin-bottom: 1.5em; color: var(--color-gray); }
+        a { color: var(--color-blue); text-decoration: none; font-weight: 700; }
+        a:hover { text-decoration: underline; }
+
+        /* --- HEADER Y NAVEGACIÓN --- */
+        header {
+            background-color: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky; top: 0; z-index: 1000;
+            width: 100%; padding: 20px 0;
+        }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { max-width: 170px; height: auto; }
+        
+        nav ul { list-style: none; display: flex; align-items: center; gap: 35px; }
         nav a {
-            color: var(--color-light);
-            text-decoration: none;
+            color: var(--color-black);
             font-weight: 700;
             font-size: 1em;
-            text-transform: uppercase;
+            text-decoration: none;
             padding: 5px 0;
-            position: relative;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
-        nav a:hover {
-            color: var(--color-accent); /* Color de acento al pasar el mouse */
-        }
-        /* Subrayado interactivo */
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--color-accent);
-            transition: width 0.3s ease-out;
-        }
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Botón de Llamada a la Acción Principal (Menú) */
-        .main-cta {
-            background-color: var(--color-accent);
-            color: var(--color-dark) !important;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 3px 0 #188d44;
-        }
-        .main-cta:hover {
-            background-color: var(--color-accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 0 #188d44;
-        }
-        .main-cta:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 0 #188d44;
-        }
-        .main-cta::after {
-            display: none; /* Deshabilitar subrayado del nav */
-        }
+        nav a:hover { color: var(--color-blue); }
+        .nav-cta a { cursor: pointer; }
         
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                padding: 15px 20px;
-            }
-            nav ul {
-                padding: 10px 0;
-                justify-content: center;
-                gap: 15px;
-            }
-            .main-cta {
-                margin-top: 10px;
-            }
-        }
-        
-        /* --- HERO Y CONTENIDO PRINCIPAL --- */
-        .hero-title {
-            padding: 80px 20px;
-            background-color: var(--color-light);
-        }
-        .hero-title h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            color: var(--color-dark);
-        }
-        .hero-title p {
-            color: #555;
-            font-size: 1.2em;
-            font-style: italic;
-        }
-
-        /* --- SECCIÓN CARRUSEL DE PRODUCTOS / NOVEDADES (Reutilización de clases) --- */
-        .catalog-container {
-            width: 100%;
-            max-width: 1300px;
-            margin: 50px auto;
-        }
-        
-        .product-carousel {
-            display: flex;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            gap: 30px;
-            padding: 10px 20px 40px; 
-            margin-top: 40px;
-        }
-        
-        /* Ocultar barra de desplazamiento */
-        .product-carousel::-webkit-scrollbar { display: none; }
-        .product-carousel { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        /* Tarjeta de Producto/Novedad */
-        .product-card {
-            flex: 0 0 320px;
-            scroll-snap-align: start;
-            background-color: var(--color-light);
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            transition: box-shadow 0.3s, transform 0.3s;
-            max-width: 320px;
-        }
-        
-        @media (max-width: 768px) {
-             .product-card {
-                flex: 0 0 80%; /* Ajuste en móvil */
-                max-width: 80%;
-             }
-        }
-        
-        .product-card:hover {
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-            transform: translateY(-5px);
-        }
-        
-        /* --- ESTILOS DE IMAGEN --- */
-        .catalog-container#productos .product-card img {
-            width: 100%;
-            height: 300px; /* Tamaño producto */
-            object-fit: cover; 
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border: 1px solid #f0f0f0;
-        }
-        
-        .catalog-container#novedades .product-card img {
-            width: 100%;
-            height: 200px; /* Tamaño novedad */
-            object-fit: cover; 
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border: 1px solid #f0f0f0;
-        }
-        /* ------------------------------------------------------------------- */
-
-        .product-card h3 {
-            color: var(--color-text);
-            font-size: 1.6em;
-            margin: 10px 0 5px;
+        /* --- HERO SECTION (COMPACTO) --- */
+        .hero {
+            padding: 60px 0 60px; /* Espaciado reducido */
             text-align: center;
         }
-
-        /* NUEVO: Precio Tachado */
-        .old-price {
-            font-size: 1.1em;
-            color: #999;
-            text-decoration: line-through;
-            margin-bottom: -5px; /* Acercar al precio actual */
-            display: block;
-        }
-
-        .price {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #cc0000; /* Se mantiene el rojo para resaltar el precio de venta */
-            margin-bottom: 15px;
-        }
-
-        /* --- NUEVO ESTILO DE DIRECCIÓN PARA NOVEDADES --- */
-        .novelty-address {
-            font-size: 0.9em;
-            color: var(--color-text);
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-        .novelty-address i {
-            color: #cc0000; /* Punto rojo para la ubicación */
-            margin-right: 5px;
-        }
-        .novelty-address a {
-            color: var(--color-text);
-            text-decoration: none;
-            font-weight: 700;
-            transition: color 0.3s;
-        }
-        .novelty-address a:hover {
-            text-decoration: underline;
-            color: var(--color-accent);
+        .hero h1 {
+            font-size: 4.5rem; /* Tamaño ajustado */
+            letter-spacing: -2px;
         }
         
-        /* --- ESTILO DE FECHA PARA NOVEDADES --- */
-        .novelty-date {
-            font-size: 0.95em;
-            color: var(--color-accent); /* Verde para resaltar la fecha */
-            font-weight: 700;
-            margin-top: 10px;
-            padding-top: 5px;
-            border-top: 1px solid #eee;
+        /* Animación de Texto en H1 */
+        @keyframes slideInLine {
+            from { transform: translateY(110%); }
+            to { transform: translateY(0); }
+        }
+        .hero h1 .line-container {
+            overflow: hidden;
+            display: block;
+        }
+        .hero h1 .line-container span {
+            display: block;
+            animation: slideInLine 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .hero h1 .line-1 span { animation-delay: 0.1s; }
+        .hero h1 .line-2 span { animation-delay: 0.3s; }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--color-gray);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 20px auto 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+            opacity: 0;
         }
         
-        /* Botón de Comprar (Interactivo) */
-        .buy-button {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background-color: var(--color-accent); 
-            color: var(--color-dark); /* Texto oscuro para mayor contraste */
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 1.1em;
+        /* --- MARQUESINA --- */
+        .marquee {
+            background-color: var(--color-blue);
+            color: var(--color-white);
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-content span {
+            font-family: var(--font-heading);
             font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 50px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 0 #188d44; /* Sombra 3D */
-            border: none;
-        }
-
-        .buy-button:hover {
-            background-color: var(--color-accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #188d44;
-        }
-        .buy-button:active {
-            transform: translateY(4px); /* Efecto de click */
-            box-shadow: 0 0 0 #188d44;
-        }
-        .buy-button i {
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-
-        /* --- FOOTER PROFESIONAL --- */
-        footer {
-            background-color: var(--color-dark);
-            color: var(--color-light);
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .footer-content .motto {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: var(--color-accent); /* Lema en color de acento */
-            font-style: italic;
-        }
-        .footer-content a {
-            color: var(--color-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .footer-content a:hover {
-            color: var(--color-accent);
         }
         
-        /* Estilos para Botones de Redes Sociales (Interactivos) */
+        /* --- SECCIONES PRINCIPALES --- */
+        main section { padding: 100px 0; }
+        
+        /* --- SECCIÓN BENEFICIOS --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .benefit-item { text-align: center; }
+        .benefit-item i {
+            font-size: 2.5rem;
+            color: var(--color-blue);
+            margin-bottom: 20px;
+        }
+        .benefit-item h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+        .benefit-item p { font-size: 0.95rem; line-height: 1.5; }
+        
+        /* --- SECCIÓN MODO de USO --- */
+        .how-to-section { background-color: var(--color-light-gray); }
+        .how-to-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            text-align: center;
+        }
+        .how-to-step .step-number {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--color-border);
+            line-height: 1;
+        }
+        .how-to-step h3 {
+            font-size: 1.5rem;
+            margin-top: -10px;
+        }
+        .how-to-step p { font-size: 1rem; }
+        
+        /* --- DISEÑO DE TARJETA (Novedades) --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .card {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-image { width: 100%; height: 240px; overflow: hidden; }
+        .card-image img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .card-content { padding: 25px; }
+        .card-content p { font-size: 0.95em; color: var(--color-gray); margin-bottom: 1em; }
+        
+        .novelty-date {
+            font-size: 0.9em; font-weight: 700;
+            color: var(--color-blue);
+            margin-top: 15px; padding-top: 15px;
+            border-top: 1px solid var(--color-border);
+            text-transform: uppercase;
+        }
+        .novelty-address { margin-top: 10px; font-size: 0.95em; }
+        .novelty-address i { color: var(--color-red); margin-right: 8px; }
+        .novelty-address a { color: var(--color-black); font-weight: 700; }
+        
+
+        /* ==================================================================
+           INICIO: NUEVA SECCIÓN "CLIENTES SATISFECHOS" (MOSAIC LAYOUT)
+        ================================================================== */
+        .gallery-collage {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* Establece una altura de fila fija para crear el mosaico */
+            grid-auto-rows: 200px;
+            gap: 10px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Rellena el contenedor */
+            display: block;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03); /* Zoom ligero */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- TAMAÑOS DEL MOSAICO --- */
+        /* Usamos nth-child para crear un patrón variado como el del ejemplo */
+        
+        /* Item 1: Cuadrado grande (2x2) */
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        /* Item 2: Estándar (1x1) */
+        .gallery-item:nth-child(2) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        /* Item 3: Rectángulo Vertical (1x2) */
+        .gallery-item:nth-child(3) {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+        /* Item 4: Estándar (1x1) */
+        .gallery-item:nth-child(4) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        /* Item 5: Rectángulo Horizontal (2x1) */
+        .gallery-item:nth-child(5) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        /* Item 6: Estándar (1x1) */
+        .gallery-item:nth-child(6) {
+             grid-column: span 1;
+             grid-row: span 1;
+        }
+        /* Item 7: Rectángulo Horizontal (2x1) */
+        .gallery-item:nth-child(7) {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+        /* Item 8: Estándar (1x1) */
+         .gallery-item:nth-child(8) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        /* ==================================================================
+           FIN: NUEVA SECCIÓN "CLIENTES SATISFECHOS"
+        ================================================================== */
+
+        
+        /* --- ESTILOS PRODUCTOS (en modal) --- */
+        .price-box { margin: 10px 0 20px; }
+        .old-price {
+            font-size: 1.1em; color: var(--color-gray);
+            text-decoration: line-through; display: block;
+        }
+        .price {
+            font-family: var(--font-heading);
+            font-size: 2.5rem; color: var(--color-red);
+            line-height: 1.1; font-weight: 800;
+        }
+
+        .buy-button {
+            display: block; width: 100%; padding: 14px;
+            color: var(--color-white);
+            text-decoration: none; border-radius: 8px;
+            font-size: 1.1em; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none; text-align: center;
+        }
+        .buy-button:hover { transform: scale(1.03); }
+        .buy-button i { margin-right: 10px; }
+        
+        .buy-button.whatsapp { 
+            background-color: var(--color-whatsapp); 
+            font-family: var(--font-body);
+        }
+        .buy-button.whatsapp:hover { background-color: #1ebe56; }
+
+        .buy-button.primary {
+            background-color: var(--color-blue);
+            font-family: var(--font-body);
+        }
+        .buy-button.primary:hover {
+            background-color: #004ABC;
+        }
+
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 0;
+            background-color: var(--color-black);
+            color: var(--color-light-gray);
+            text-align: center;
+            margin-top: 100px;
+        }
+        .footer-content .logo img { filter: invert(1); margin-bottom: 20px; }
         .social-buttons {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+            display: flex; justify-content: center;
+            gap: 25px; margin-bottom: 30px;
         }
         .social-button {
+            font-size: 1.8rem;
+            color: var(--color-white);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-button:hover { transform: scale(1.1); }
+        .social-button.facebook:hover { color: #3b5998; }
+        .social-button.instagram:hover { color: #e1306c; }
+        .social-button.support:hover { color: var(--color-whatsapp); }
+        
+        .footer-content p { color: var(--color-gray); margin: 5px 0; }
+        .footer-content p a { color: var(--color-white); }
+        .footer-content p a:hover { color: var(--color-blue); text-decoration: none; }
+
+
+        /* --- BOTONES FLOTANTES --- */
+        .floating-cta {
+            position: fixed;
+            z-index: 1001;
+            background-color: var(--color-blue);
+            color: var(--color-white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: #333;
-            color: white;
-            border-radius: 50%;
-            font-size: 1.5em;
-            transition: background-color 0.3s, transform 0.3s;
-            text-decoration: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 5px 20px rgba(0, 95, 255, 0.4);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
-        .social-button:hover {
+        .floating-cta:hover {
+            transform: scale(1.1);
+            background-color: #004ABC;
+        }
+        .floating-cart {
+            bottom: 30px;
+            right: 30px;
+        }
+        .floating-premios {
+            bottom: 100px; 
+            right: 30px;
+        }
+        
+        
+        /* --- ESTILOS DEL MODAL (GENERAL) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none; opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            overflow-y: auto;
+            padding: 40px 0;
+            /* Añadido para centrar el modal de galería */
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.show { 
+            display: flex; /* Cambiado de 'block' a 'flex' para centrar */
+            opacity: 1; 
+        }
+        
+        /* Contenedor genérico para modales con contenido (Comprar, Premios) */
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Reseteamos el flex-centering para los modales de contenido */
+            margin-top: 40px;
+            margin-bottom: 40px;
+            align-self: flex-start; 
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: -10px; right: 0;
+            font-size: 3rem; font-weight: bold;
+            color: var(--color-gray);
+            background: none; border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+            z-index: 10;
+        }
+        .modal-close:hover { color: var(--color-white); }
+        
+        /* --- MODAL (COMPRAR) --- */
+        #modal-comprar .modal-content h2 { color: var(--color-white); }
+        #modal-comprar .card-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        #modal-comprar .card-image img {
+            object-fit: contain; /* Muestra la imagen completa */
+        }
+
+        /* --- MODAL (PREMIOS) --- */
+        .premios-modal-content {
+            max-width: 600px; 
+            background-color: var(--color-white);
+            padding: 30px 35px;
+            border-radius: 12px;
+            overflow-y: auto; 
+            max-height: 90vh;
+        }
+        .premios-modal-content .modal-close {
+            color: var(--color-gray);
+            top: 10px; right: 15px;
+        }
+        .premios-modal-content .modal-close:hover {
+            color: var(--color-black);
+        }
+        .premios-modal-content h2 {
+            color: var(--color-black);
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .premios-modal-content p.modal-subtext {
+            color: var(--color-gray);
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .premios-gallery-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 5px;
+            gap: 15px;
+            -webkit-overflow-scrolling: touch; 
+            scrollbar-width: thin; 
+            scrollbar-color: var(--color-border) var(--color-white);
+        }
+        .premios-gallery-container::-webkit-scrollbar { height: 6px; }
+        .premios-gallery-container::-webkit-scrollbar-track { background: var(--color-light-gray); border-radius: 10px; }
+        .premios-gallery-container::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 10px; }
+        .premios-gallery-container::-webkit-scrollbar-thumb:hover { background: var(--color-gray); }
+        .premio-item {
+            flex: 0 0 140px; 
+            text-align: center;
+            transition: transform 0.3s ease; 
+        }
+        .premio-item:hover { transform: scale(1.05); }
+        .premio-item img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .premio-item p {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-top: 8px;
+            margin-bottom: 0;
+            line-height: 1.3;
+        }
+        .premios-modal-content .buy-button { margin-top: 25px; }
+
+
+        /* ==================================================================
+           INICIO: NUEVOS ESTILOS PARA MODAL DE GALERÍA (LIGHTBOX)
+        ================================================================== */
+
+        /* El modal de galería (#modal-gallery) usa el .modal-overlay
+           pero su contenido es diferente */
+        .gallery-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Reseteamos los márgenes de .modal-content */
+            margin: auto; 
+            align-self: center;
+        }
+
+        .gallery-modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        /* Estilo del botón de cierre para el modal de galería (lightbox)
+           Lo hacemos fijo en la pantalla para fácil acceso */
+        #modal-gallery .modal-close {
+            position: fixed; /* Fijo en la pantalla */
+            top: 20px;
+            right: 30px;
+            color: var(--color-white); /* Color blanco para alto contraste */
+            font-size: 3rem;
+            z-index: 2002; /* Por encima de la imagen */
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        #modal-gallery .modal-close:hover {
+            color: var(--color-light-gray);
             transform: scale(1.1);
         }
-        /* Colores específicos de redes para mantener la marca */
-        .social-button.facebook:hover { background-color: #3b5998; }
-        .social-button.instagram:hover { background-color: #e1306c; }
-        .social-button.support:hover { background-color: var(--color-accent); }
+        /* ==================================================================
+           FIN: NUEVOS ESTILOS PARA MODAL DE GALERÍA
+        ================================================================== */
+
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+            .card-grid { grid-template-columns: repeat(2, 1fr); }
+            #modal-comprar .card-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+            .hero { padding: 40px 0 40px; }
+            
+            .header-container { flex-direction: column; gap: 20px; }
+            nav ul { justify-content: center; flex-wrap: wrap; gap: 20px; }
+            
+            .benefits-grid { grid-template-columns: 1fr; }
+            .how-to-grid { grid-template-columns: 1fr; gap: 30px; }
+            .card-grid { grid-template-columns: 1fr; }
+            #modal-comprar .card-grid { grid-template-columns: 1fr; }
+
+            /* Ajuste de botones flotantes en móvil (más pequeños) */
+            .floating-cta {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+            .floating-cart { bottom: 20px; right: 20px; }
+            .floating-premios { 
+                bottom: 85px; /* 20px + 55px + 10px */
+                right: 20px; 
+            }
+
+            /* Ajuste modal premios en móvil */
+            .premios-modal-content {
+                width: 90%;
+                padding: 25px 20px;
+                margin: 20px auto;
+            }
+            .premio-item {
+                flex: 0 0 120px; /* Más pequeños en móvil */
+            }
+
+            /* ==================================================================
+               INICIO: AJUSTE RESPONSIVE DEL MOSAICO
+            ================================================================== */
+            .gallery-collage {
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+                grid-auto-rows: 150px; /* Filas más pequeñas */
+                gap: 10px;
+            }
+
+            /* Reseteamos TODOS los items para que ocupen 1x1 en móvil */
+            .gallery-item:nth-child(n) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            /* ==================================================================
+               FIN: AJUSTE RESPONSIVE DEL MOSAICO
+            ================================================================== */
+
+
+            /* Ajuste botón de cierre de galería en móvil */
+            #modal-gallery .modal-close {
+                top: 10px;
+                right: 15px;
+            }
+        }
 
     </style>
 </head>
 <body>
 
     <header>
-        <div class="header-container">
+        <div class="container header-container">
             <div class="logo">
-                <img src="https://i.postimg.cc/Y9XpPkW3/1759816774563.png" alt="Logo Revolution Wax">
+                <a href="#inicio"><img src="https://i.postimg.cc/Y9XpPkW3/1759816774563.png" alt="Logo Revolution Wax"></a>
             </div>
-            
             <nav>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#novedades">Novedades</a></li> 
-                    <li><a href="#productos">Productos</a></li>
                     <li><a href="#contacto">Contacto</a></li>
-                    </ul>
+                    <li class="nav-cta"><a id="open-modal-nav">Comprar</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <main id="inicio">
-        <div class="hero-title">
-            <h1>Revolution Wax: El Cuidado Premium que tu Auto Merece</h1>
-            <p>La fórmula premium definitiva 5 en 1 para un lavado en seco impecable, brillo y protección duradera.</p>
-        </div>
-
-        <div class="catalog-container" id="novedades">
-            <h2>Últimas Novedades y Eventos</h2>
-            
-            <div class="product-carousel">
-    
-                <div class="product-card">
-                    <img src="https://i.postimg.cc/1XsBBBCr/Screenshot-20251007-185454-366.png" alt="Evento Santa Mónica">
-                    <h3>¡Próximo evento en Santa Mónica!</h3>
-                    <p>Todas tus cargas realizadas de $350 hacia adelante te dara oportunidad de ganar vales de gasolina,Aceites y Productos Revolution Wax.</p>
-                    <div class="novelty-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        <a href="https://maps.app.goo.gl/6iJawbu2SL68op5X7?g_st=ac" target="_blank" title="Ver en Google Maps">
-                            Gasolinera Santa Mónica, Hidalgo
-                        </a>
-                    </div>
-                    <div class="novelty-date">Se realizará el: 10/Octubre/2025</div>
-                </div>
-    
-                <div class="product-card">
-                    <img src="https://i.postimg.cc/SKmKyzPm/Screenshot-20251007-190211-865.png" alt="Evento Ariel Tulipanes">
-                    <h3>¡Magno evento en Pemex Ariel Tulipanes!</h3>
-                    <p>Todas tus cargas de $350 hacia adelante participan, podrás participar para varios regalos TV 32 Pulgadas, Vales de gasolina, Aceites y productos Revolution Wax.</p>
-                    <div class="novelty-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        <a href="https://maps.app.goo.gl/jfRrWjHyK4pmN6sa8?g_st=ac" target="_blank" title="Ver en Google Maps">
-                            Gasolinera Ariel, Fracc. Tulipanes, Mineral de la Reforma.
-                        </a>
-                    </div>
-                    <div class="novelty-date">Se realizará el: 24/Diciembre/2025</div>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://i.postimg.cc/13dZdVZ0/Screenshot-20251007-191021-180.png" alt="Evento Ariel Ebelardo Marquez">
-                    <h3>¡Gran evento en Ariel Ebelardo Marquez!</h3>
-                    <p>Todas tus cargas de $350 en adelante te ayudara a ganar, vales de gasolina, Aceites y aditivos, productos Revolution Wax y regalos sorpresa.</p>
-                    <div class="novelty-address">
-                        <i class="fas fa-map-marker-alt"></i> 
-                        <a href="https://maps.app.goo.gl/FWTR5ZtbYLNAwKNE6?g_st=ac" target="_blank" title="Ver en Google Maps">
-                            Gasolinera Ariel, Ebelardo Marquez, Pachuca de Soto.
-                        </a>
-                    </div>
-                    <div class="novelty-date">Se realizará el: 14/Febrero/2026</div>
-                </div>
-    
-            </div>
-            <p style="margin-top: 20px; color: #777; font-style: italic; font-size: 0.9em;">(Desliza para ver más novedades)</p>
-        </div>
+    <main>
         
-        <div class="catalog-container" id="productos">
-            <h2>Colección de Productos Premium</h2>
-            
-            <div class="product-carousel">
-    
-                <div class="product-card">
-                    <img src="https://i.postimg.cc/ncVFq3Cy/D-NQ-NP-827300-MLM92390346690-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Frutal">
-                    <h3>Revolution Wax "Frutal"</h3>
-                    <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Frutal ¡2X1!</p>
-                    <div class="old-price">$350.00 MX</div>
-                    <div class="price">$200.00 MX</div>
-                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20frutal.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Comprar/Consultar
-                    </a>
-                </div>
-    
-                <div class="product-card">
-                    <img src="https://i.postimg.cc/nMfc42m1/D-NQ-NP-834678-MLM92797513859-092025-O-2-revolution-wax-aroma-fresa-formula-lavado-en-seco-1-litro.webp" alt="Revolution Wax Fresas">
-                    <h3>Revolution Wax "Fresas"</h3>
-                    <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Fresas ¡2X1!</p>
-                     <div class="old-price">$350.00 MX</div>
-                    <div class="price">$200.00 MX</div>
-                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20fresas.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Comprar/Consultar
-                    </a>
-                </div>
-    
-                <div class="product-card">
-                    <img src="https://i.postimg.cc/XNRhbq0k/D-NQ-NP-675123-MLM92398495828-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Revolution Wax Hugo Boss">
-                    <h3>Revolution Wax "Hugo Boss"</h3>
-                    <p>Fórmula lavado en seco 5 en 1.   Lava, Encera, Cristaliza, Protege y Pule   con aroma Hugo Boss ¡2X1!</p>
-                     <div class="old-price">$350.00 MX</div>
-                    <div class="price">$200.00 MX</div>
-                    <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20Hugo%20Boss.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Comprar/Consultar
-                    </a>
-                </div>
-                
-                <div class="product-card">
-                    <img src="https://i.postimg.cc/mgmkq0Fw/D-NQ-NP-960118-MLM89574716468-082025-O-gel-acondicionador-revolution-wax-abrillanta-nutre-protege.webp" alt="Crema Acondicionadora">
-                    <h3>Crema Acondicionadora y Abrillantadora</h3>
-                    <p>Tratamiento para tablero y llantas, material de piel y vinil. No tiene glicerina,No empaña cristales.</p>
-                    <div class="price">$50.00 MX</div>
-                    <a href="https://wa.me/5214499328985?text=Hola!%20Quisiera%20saber%20m%C3%A1s%20sobre%20la%20Crema%20Acondicionadora%20y%20Abrillantadora.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Comprar/Consultar
-                    </a>
-                </div>
-    
+        <section class="hero" id="inicio">
+            <div class="container">
+                <h1>
+                    <span class="line-container line-1"><span>REVOLUTION WAX:</span></span>
+                    <span class="line-container line-2"><span>EL CUIDADO DEFINITIVO</span></span>
+                </h1>
+                <p>La fórmula 5-en-1 para un lavado en seco, brillo y protección sin precedentes.</p>
             </div>
-            <p style="margin-top: 20px; color: #777; font-style: italic; font-size: 0.9em;">(Desliza para ver más productos)</p>
+        </section>
+
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>¡GRAN PROMOCIÓN 2X1 POR TIEMPO LIMITADO!</span>
+                <span>PRÓXIMOS EVENTOS EN ARIEL TULIPANES Y VALERO</span>
+                <span>¡GRAN PROMOCIÓN 2X1 POR TIEMPO LIMITADO!</span>
+                <span>PRÓXIMOS EVENTOS EN ARIEL TULIPANES Y VALERO</span>
+            </div>
         </div>
-        </main>
+
+        <section id="beneficios" class="container">
+            <div class="benefits-grid">
+                <div class="benefit-item reveal-on-scroll">
+                    <i class="fas fa-soap"></i>
+                    <h3>Lava sin Agua</h3>
+                    <p>Limpia la suciedad de la superficie sin una sola gota de agua.</p>
+                </div>
+                <div class="benefit-item reveal-on-scroll">
+                    <i class="fas fa-spray-can-sparkles"></i>
+                    <h3>Encera y Pule</h3>
+                    <p>Deja un acabado de cera de carnauba suave y brillante.</p>
+                </div>
+                <div class="benefit-item reveal-on-scroll">
+                    <i class="fas fa-sun"></i>
+                    <h3>Cristaliza</h3>
+                    <p>Crea un efecto espejo que realza el brillo de Tus cristales y retrovisores.</p>
+                </div>
+                <div class="benefit-item reveal-on-scroll">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Protege</h3>
+                    <p>Añade una capa protectora contra el polvo, sol y lluvia.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="como-usar" class="how-to-section">
+            <div class="container">
+                <h2 class="reveal-on-scroll">Simple en 3 Pasos</h2>
+                <div class="how-to-grid">
+                    <div class="how-to-step reveal-on-scroll">
+                        <div class="step-number">01</div>
+                        <h3>Aplica</h3>
+                        <p>Rocía una pequeña cantidad de Revolution Wax sobre una sección del auto.</p>
+                    </div>
+                    <div class="how-to-step reveal-on-scroll">
+                        <div class="step-number">02</div>
+                        <h3>Esparce</h3>
+                        <p>Con una microfibra limpia y humeda, esparce el producto suavemente en una dirección.</p>
+                    </div>
+                    <div class="how-to-step reveal-on-scroll">
+                        <div class="step-number">03</div>
+                        <h3>Brilla</h3>
+                        <p>Con otra microfibra seca, retira excelente y pule la sección hasta obtener un brillo impecable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="novedades">
+            <div class="container">
+                <h2 class="reveal-on-scroll">Próximos Eventos</h2>
+                
+                <div class="card-grid">
+                    <div class="card reveal-on-scroll">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/SKmKyzPm/Screenshot-20251007-190211-865.png" alt="Evento Ariel Tulipanes">
+                        </div>
+                        <div class="card-content">
+                            <h3>Magno evento en Ariel Tulipanes</h3>
+                            <p>Tus cargas de $350+ participan para ganar TVs, vales de gasolina y productos.</p>
+                            <div class="novelty-address">
+                                <a href="https://maps.app.goo.gl/jfRrWjHyK4pmN6sa8?g_st=ac" target="_blank">
+                                    <i class="fas fa-map-marker-alt"></i> Gasolinera Ariel, Fracc. Tulipanes
+                                </a>
+                            </div>
+                            <div class="novelty-date">24 de Diciembre, 2025</div>
+                        </div>
+                    </div>
+                    <div class="card reveal-on-scroll">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/13dZdVZ0/Screenshot-20251007-191021-180.png" alt="Evento Ariel Ebelardo Marquez">
+                        </div>
+                        <div class="card-content">
+                            <h3>Gran evento en Ariel Ebelardo Marquez</h3>
+                            <p>Gana vales, aceites, productos y regalos sorpresa con tus cargas de $350+.</p>
+                            <div class="novelty-address">
+                                <a href="https://maps.app.goo.gl/FWTR5ZtbYLNAwKNE6?g_st=ac" target="_blank">
+                                    <i class="fas fa-map-marker-alt"></i> Gasolinera Ariel, Ebelardo Marquez
+                                </a>
+                            </div>
+                            <div class="novelty-date">14 de Febrero, 2026</div>
+                        </div>
+                    </div>
+                    <div class="card reveal-on-scroll">
+                        <div class="card-image">
+                            <img src="https://i.postimg.cc/1XsBBBCr/Screenshot-20251007-185454-366.png" alt="Evento Valero">
+                        </div>
+                        <div class="card-content">
+                            <h3>Evento Valero Garage Central</h3>
+                            <p>Oportunidad de ganar vales de gasolina y productos Revolution Wax.</p>
+                            <div class="novelty-address">
+                                <a href="https://maps.app.goo.gl/6iJawbu2SL68op5X7?g_st=ac" target="_blank">
+                                    <i class="fas fa-map-marker-alt"></i> Gasolinera Valero Centro, Pachuca
+                                </a>
+                            </div>
+                            <div class="novelty-date">18 de Enero, 2026</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ==================================================================
+           INICIO: NUEVA SECCIÓN HTML "CLIENTES SATISFECHOS"
+        ================================================================== -->
+        <section id="clientes-satisfechos" class="how-to-section">
+            <div class="container">
+                <h2 class="reveal-on-scroll">Clientes Satisfechos</h2>
+                
+                <div class="gallery-collage">
+                    <!-- Las clases nth-child(n) en CSS se encargarán del layout -->
+                    <div class="gallery-item reveal-on-scroll">
+                        <img src="https://i.postimg.cc/Xq3hLFdX/IMG-20251010-141559051.jpg" alt="Foto de cliente satisfecho 1">
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <img src="https://i.postimg.cc/m2gprTw4/IMG-20251010-142717610-HDR.jpg" alt="Foto de cliente satisfecho 2">
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <img src="https://i.postimg.cc/RhsRtnTg/IMG-20251010-143043521-HDR.jpg" alt="Foto de cliente satisfecho 3">
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <img src="https://i.postimg.cc/G2bJSjg0/IMG-20251010-144608768-HDR.jpg" alt="Foto de cliente satisfecho 4">
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <img src="https://i.postimg.cc/Qdp7GTWz/IMG-20251010-144841732-HDR.jpg" alt="Foto de cliente satisfecho 5">
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <img src="https://i.postimg.cc/5jWtnspw/IMG-20251010-150444393-HDR.jpg" alt="Foto de cliente satisfecho 6">
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <img src="https://i.postimg.cc/j5C4y4Mp/IMG-20251010-160344390-HDR.jpg" alt="Foto de cliente satisfecho 7">
+                    </div>
+                    <div class="gallery-item reveal-on-scroll">
+                        <img src="https://i.postimg.cc/0N4w1RCV/IMG-20251010-160014770-HDR.jpg" alt="Foto de cliente satisfecho 8">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ==================================================================
+           FIN: NUEVA SECCIÓN HTML "CLIENTES SATISFECHOS"
+        ================================================================== -->
+        
+    </main>
 
     <footer id="contacto">
-        <div class="footer-content">
-            <p class="motto">"La calidad de nuestra cera es el reflejo de nuestro compromiso con tu auto."</p>
-            
-            <div class="social-buttons">
-                <a href="https://www.facebook.com/RevolutionWaxRW" target="_blank" class="social-button facebook" aria-label="Síguenos en Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/angelzamorange" target="_blank" class="social-button instagram" aria-label="Síguenos en Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://wa.me/5217719624236?text=Hola!%20Quisiera%20hablar%20con%20soporte%20por%20favor%20gracias." target="_blank" class="social-button support" aria-label="Contacto/Soporte">
-                    <i class="fas fa-headset"></i>
-                </a>
+        <div class="container footer-content">
+            <div class="logo">
+                <img src="https://i.postimg.cc/Y9XpPkW3/1759816774563.png" alt="Logo Revolution Wax Blanco" style="max-width: 200px;">
             </div>
-            <p>Contacto: <a href="mailto: revolutionwaxns@gmail.com">revolutionwaxns@gmail.com</a></p>
-            <p>Teléfono: <a href="tel:4499328985">449 932 8985</a></p>
-            
-            <p style="margin-top: 20px;">© 2025 Revolution Wax. Todos los derechos reservados.</p>
+            <div class="social-buttons">
+                <a href="https://www.facebook.com/RevolutionWaxRW" target="_blank" class="social-button facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/angelzamorange" target="_blank" class="social-button instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5217719624236?text=Hola!%20Quisiera%20soporte." target="_blank" class="social-button support" aria-label="Soporte"><i class="fas fa-headset"></i></a>
+            </div>
+            <p>© 2025 Revolution Wax. Todos los derechos reservados.</p>
+            <p>
+                <a href="mailto:revolutionwaxns@gmail.com">revolutionwaxns@gmail.com</a> | 
+                <a href="tel:4499328985">449 932 8985</a>
+            </p>
         </div>
     </footer>
 
+    
+    <!-- BOTONES FLOTANTES -->
+    <button class="floating-cta floating-premios" id="open-premios-modal" aria-label="Acumula y Gana">
+        <i class="fas fa-gift"></i>
+    </button>
+    <button class="floating-cta floating-cart" id="open-modal-floating" aria-label="Comprar ahora">
+        <i class="fas fa-shopping-cart"></i>
+    </button>
+    
+
+    <!-- ==================================================================
+       INICIO: MODALES
+    ================================================================== -->
+
+    <!-- Modal de Comprar (Existente) -->
+    <div id="modal-comprar" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal-btn">×</button>
+            <h2 class="reveal-on-scroll">Colección Premium</h2>
+            
+            <div class="card-grid">
+                <div class="card reveal-on-scroll">
+                    <div class="card-image"><img src="https://i.postimg.cc/ncVFq3Cy/D-NQ-NP-827300-MLM92390346690-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Frutal"></div>
+                    <div class="card-content">
+                        <h3>Revolution Wax "Frutal"</h3>
+                        <p>Fórmula 5 en 1. Lava, Encera, Cristaliza, Protege y Pule. ¡2X1!</p>
+                        <div class="price-box">
+                            <span class="old-price">$350.00 MX</span>
+                            <div class="price">$200.00 MX</div>
+                        </div>
+                        <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20frutal.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
+                    </div>
+                </div>
+                <div class="card reveal-on-scroll">
+                    <div class="card-image"><img src="https://i.postimg.cc/nMfc42m1/D-NQ-NP-834678-MLM92797513859-092025-O-2-revolution-wax-aroma-fresa-formula-lavado-en-seco-1-litro.webp" alt="Fresas"></div>
+                    <div class="card-content">
+                        <h3>Revolution Wax "Fresas"</h3>
+                        <p>Fórmula 5 en 1. Lava, Encera, Cristaliza, Protege y Pule. ¡2X1!</p>
+                        <div class="price-box">
+                            <span class="old-price">$350.00 MX</span>
+                            <div class="price">$200.00 MX</div>
+                        </div>
+                        <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20fresas.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
+                    </div>
+                </div>
+                <div class="card reveal-on-scroll">
+                    <div class="card-image"><img src="https://i.postimg.cc/XNRhbq0k/D-NQ-NP-675123-MLM92398495828-092025-O-2-revolution-wax-formula-premium-para-lavar-auto-en-seco-1l.webp" alt="Hugo Boss"></div>
+                    <div class="card-content">
+                        <h3>Revolution Wax "Hugo Boss"</h3>
+                        <p>Fórmula 5 en 1. Lava, Encera, Cristaliza, Protege y Pule. ¡2X1!</p>
+                        <div class="price-box">
+                            <span class="old-price">$350.00 MX</span>
+                            <div class="price">$200.00 MX</div>
+                        </div>
+                        <a href="https://wa.me/5214499328985?text=Hola!%20Estoy%20interesado%20en%20Revolution%20Wax%20aroma%20Hugo%20Boss.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
+                    </div>
+                </div>
+                <div class="card reveal-on-scroll">
+                    <div class="card-image"><img src="https://i.postimg.cc/mgmkq0Fw/D-NQ-NP-960118-MLM89574716468-082025-O-gel-acondicionador-revolution-wax-abrillanta-nutre-protege.webp" alt="Crema"></div>
+                    <div class="card-content">
+                        <h3>Crema Acondicionadora</h3>
+                        <p>Tratamiento para tablero, llantas, piel y vinil. No tiene glicerina.</p>
+                        <div class="price-box">
+                            <div class="price" style="margin-top: 1.1em;">$50.00 MX</div>
+                        </div>
+                        <a href="https://wa.me/5214499328985?text=Hola!%20Quisiera%20saber%20m%C3%A1s%20sobre%20la%20Crema%20Acondicionadora%20y%20Abrillantadora.%20%C2%BFMe%20pueden%20dar%20mas%20informacion%20para%20la%20compra%20por%20favor?" class="buy-button whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal de Premios (Nuevo) -->
+    <div id="modal-premios" class="modal-overlay">
+        <div class="modal-content premios-modal-content">
+            <button class="modal-close" id="close-premios-modal">×</button>
+            
+            <h2>Acumula y Gana</h2>
+            <p class="modal-subtext">
+                Todas tus compras acumulan puntos para participar por increíbles premios. 
+                ¡Descarga nuestra app y empieza a acumular para ganar!
+            </p>
+
+            <div class="premios-gallery-container">
+                <div class="premio-item">
+                    <img src="https://placehold.co/150x100/EAEAEA/777777?text=Premio+1" alt="Premio 1">
+                    <p>Pantalla 4K</p>
+                </div>
+                <div class="premio-item">
+                    <img src="https://placehold.co/150x100/EAEAEA/777777?text=Premio+2" alt="Premio 2">
+                    <p>Vale de Gasolina</p>
+                </div>
+                <div class="premio-item">
+                    <img src="https://placehold.co/150x100/EAEAEA/777777?text=Premio+3" alt="Premio 3">
+                    <p>Kit Revolution Wax</p>
+                </div>
+                <div class="premio-item">
+                    <img src="https://placehold.co/150x100/EAEAEA/777777?text=Premio+4" alt="Premio 4">
+                    <p>Audífonos BT</p>
+                </div>
+                <div class="premio-item">
+                    <img src="https://placehold.co/150x100/EAEAEA/777777?text=Premio+5" alt="Premio 5">
+                    <p>Bocina Inteligente</p>
+                </div>
+                <div class="premio-item">
+                    <img src="https://placehold.co/150x100/EAEAEA/777777?text=Premio+6" alt="Premio 6">
+                    <p>Smartwatch</p>
+                </div>
+            </div>
+
+            <a href="https://revolutionwax-premios.pages.dev/Index" class="buy-button primary" target="_blank">
+                Descargar App
+            </a>
+        </div>
+    </div>
+    
+
+    <!-- ==================================================================
+       INICIO: NUEVO MODAL DE GALERÍA (LIGHTBOX)
+    ================================================================== -->
+    <div id="modal-gallery" class="modal-overlay">
+        <button class="modal-close" id="close-gallery-modal">×</button>
+        <div class="gallery-modal-content">
+            <img id="gallery-modal-image" src="" alt="Cliente Satisfecho">
+        </div>
+    </div>
+    <!-- ==================================================================
+       FIN: NUEVO MODAL DE GALERÍA (LIGHTBOX)
+    ================================================================== -->
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- LÓGICA DEL MODAL DE COMPRA (EXISTENTE) ---
+            const modalComprar = document.getElementById('modal-comprar');
+            const openNavButton = document.getElementById('open-modal-nav');
+            const openFloatingButton = document.getElementById('open-modal-floating');
+            const closeComprarButton = document.getElementById('close-modal-btn');
+
+            // Funciones genéricas para abrir/cerrar por ID
+            function openModal(modalElement) {
+                if(modalElement) modalElement.classList.add('show');
+            }
+            function closeModal(modalElement) {
+                if(modalElement) modalElement.classList.remove('show');
+            }
+
+            openNavButton.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                openModal(modalComprar);
+            });
+            openFloatingButton.addEventListener('click', () => openModal(modalComprar));
+            closeComprarButton.addEventListener('click', () => closeModal(modalComprar));
+            modalComprar.addEventListener('click', (e) => {
+                // Cierra solo si se hace clic en el fondo (el overlay)
+                if (e.target === modalComprar) {
+                    closeModal(modalComprar);
+                }
+            });
+
+            
+            // --- LÓGICA PARA MODAL DE PREMIOS (EXISTENTE) ---
+            const modalPremios = document.getElementById('modal-premios');
+            const openPremiosButton = document.getElementById('open-premios-modal');
+            const closePremiosButton = document.getElementById('close-premios-modal');
+
+            openPremiosButton.addEventListener('click', () => openModal(modalPremios));
+            closePremiosButton.addEventListener('click', () => closeModal(modalPremios));
+            modalPremios.addEventListener('click', (e) => {
+                if (e.target === modalPremios) {
+                    closeModal(modalPremios);
+                }
+            });
+            
+            // ==================================================================
+            // INICIO: NUEVA LÓGICA PARA MODAL DE GALERÍA (LIGHTBOX)
+            // ==================================================================
+            const modalGallery = document.getElementById('modal-gallery');
+            const closeGalleryButton = document.getElementById('close-gallery-modal');
+            const modalGalleryImage = document.getElementById('gallery-modal-image');
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+
+            // 1. Abrir modal de galería al hacer clic en una imagen
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const imgSrc = item.getAttribute('src');
+                    modalGalleryImage.setAttribute('src', imgSrc);
+                    openModal(modalGallery);
+                });
+            });
+
+            // 2. Cerrar con el botón 'X'
+            closeGalleryButton.addEventListener('click', () => closeModal(modalGallery));
+            
+            // 3. Cerrar haciendo clic en el fondo (overlay)
+            modalGallery.addEventListener('click', (e) => {
+                if (e.target === modalGallery) {
+                    closeModal(modalGallery);
+                }
+            });
+            // ==================================================================
+            // FIN: NUEVA LÓGICA PARA MODAL DE GALERÍA
+            // ==================================================================
+
+        });
+    </script>
+
 </body>
 </html>
+
+
